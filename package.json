@@ -8,7 +8,8 @@
     "dev": "node src/server.js",
     "format:fix": "prettier . --write",
     "format:check": "prettier . --check",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
   },
   "author": "vaishnavi",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
     "prettier": "3.5.2",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.24.1"
