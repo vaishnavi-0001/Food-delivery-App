@@ -1,17 +1,21 @@
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
+import { dirname } from "path"; // Removed `resolve`
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default [
   {
-    ignores: ["node_modules", "dist", "dist/**/*.js"], // Ignore compiled files properly
+    ignores: ["node_modules", "dist", "dist/**/*.js"],
 
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
       parser: tsparser,
       parserOptions: {
-        project: "./tsconfig.json", // Ensure correct TS project
-        tsconfigRootDir: import.meta.dirname,
+        // project: resolve(__dirname, "tsconfig.json"), // Keep commented if needed
+        tsconfigRootDir: __dirname,
       },
     },
 
