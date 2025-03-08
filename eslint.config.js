@@ -7,7 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default [
       {
-            ignores: ["node_modules", "dist", "dist/**/*.js"],
+            ignores: ["node_modules", "dist", "dist/**/*.js", "jest.config.js"],
 
             languageOptions: {
                   ecmaVersion: "latest",
