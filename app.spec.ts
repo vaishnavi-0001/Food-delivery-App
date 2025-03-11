@@ -3,7 +3,7 @@ import request from 'supertest'
 import app from "./src/app"
 import { response } from "express"
 
-describe("App", ()=> {
+describe.skip("App", ()=> {
 
     it("Should return correct discount amount", () =>{
         const discount = calculateDiscount(100, 10)

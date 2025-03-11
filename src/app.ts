@@ -1,16 +1,20 @@
 import  express, {NextFunction, Request, Response} from "express";
 import logger from "./config/logger";
+import "reflect-metadata";
 import  { HttpError } from "http-errors";
 import { error } from "console";
+import authRouter from "./auth"
 
 export const app = express()
 
 
 
 app.get('/', (req, res) => {
-  
    res.send("Welcome to auth service")
 })
+
+app.use('/auth', authRouter)
+
 
 //Global error handler must be in last
 app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
