@@ -27,10 +27,13 @@ describe("POST / auth/register", () => {
                 password : "secret",
             }
 
+            //Act
             const response = await request(app)
                     .post("/auth/register")
                     .send(userdata)
 
+
+            //Assert
             expect((response.headers as Record<string,string>)['content-type'])
                     .toEqual(expect.stringContaining('json'))
         });
