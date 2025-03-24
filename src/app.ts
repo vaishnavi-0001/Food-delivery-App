@@ -3,11 +3,11 @@ import logger from "./config/logger";
 import "reflect-metadata";
 import  { HttpError } from "http-errors";
 import { error } from "console";
-import authRouter from "./auth"
+import authRouter from "./routes/auth"
 
-export const app = express()
+const app = express()
 
-
+app.use(express.json());
 
 app.get('/', (req, res) => {
    res.send("Welcome to auth service")
@@ -32,4 +32,4 @@ app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
       ]
    })
 })
-export default app
+export default app;
