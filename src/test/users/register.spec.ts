@@ -81,6 +81,9 @@ describe("POST / auth/register", () => {
             expect(users[0].email).toBe(userData.email);
             
         });
+
+        it.todo("It should return an id of created user");
+        
     });
     describe("Missing path", () => {})
 });
