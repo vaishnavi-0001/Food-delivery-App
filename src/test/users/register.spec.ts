@@ -4,6 +4,7 @@ import { User } from "../../entity/User";
 import { DataSource } from "typeorm";
 import { AppDataSource } from "../../config/data-source";
 import { Roles } from "../../constants";
+import exp from "constants";
 
 
 describe("POST / auth/register", () => {
@@ -40,7 +41,8 @@ describe("POST / auth/register", () => {
                     .send(userdata)
 
             expect(response.statusCode).toBe(201);
-        })
+        });
+
 
         it("should return valid json response", async() => {
             const userdata = {
@@ -60,6 +62,7 @@ describe("POST / auth/register", () => {
             expect((response.headers as Record<string,string>)['content-type'])
                     .toEqual(expect.stringContaining('json'))
         });
+
 
         it("should persist the user in the database", async() =>{
             //Arrange
@@ -84,6 +87,7 @@ describe("POST / auth/register", () => {
             expect(users[0].email).toBe(userData.email);
             
         });
+
 
         it.todo("It should return an id of created user");
         
@@ -110,8 +114,52 @@ describe("POST / auth/register", () => {
             
         });
 
+        it("Should store the password in DB", async() => {
+             //Arrange
+             const userData = {
+                firstName : "Navi",
+                lastName : "Goyal",
+                email : "navi@gmail.com",
+                password : "secret",
+            }
+            //Act
+            
+           await request(app as any)
+                    .post("/auth/register")
+                    .send(userData);
+
+            //Assert
+            const userRepository = connection.getRepository(User);
+            const users = await userRepository.find();
+            expect(users[0].password).not.toBe(userData.password);
+            expect(users[0].password).toHaveLength(60);
+            expect(users[0].password).toMatch(/^\$2b\$\d+\$/);
+        });
+
+        it("should return 400 status code if email already exists", async () =>{
+            //Arrange
+            const userData = {
+                firstName : "Navi",
+                lastName : "Goyal",
+                email : "navi@gmail.com",
+                password : "secret",
+            };
+            const userRepository = connection.getRepository(User);
+
+            await userRepository.save({...userData, role: Roles.CUSTOMER});
+            //Act
+            const response = await request(app as any)
+                    .post("/auth/register")
+                    .send(userData);
+
+            const users =await userRepository.find();
+            //Assert
+            expect(response.statusCode).toBe(400);
+            expect(users).toHaveLength(1);
+        })
         
     });
+
 
 
     describe("Field are missing", () => {})

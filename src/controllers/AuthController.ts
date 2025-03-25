@@ -34,7 +34,7 @@ export class AuthController {
                   res.status(201).json({ id: user.id })
             } catch (err) {
                   next(err)
-                  return
+                  return;
             }
       }
 }
