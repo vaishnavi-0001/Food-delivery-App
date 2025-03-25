@@ -8,9 +8,9 @@ import logger from "../config/logger";
 import registerValidator from "../validator/register-validator"
 
 const router = express.Router()
-const userRepository = AppDataSource.getRepository(User)
-const userService = new UserService(userRepository)
-const authcontroller = new AuthController(userService, logger)
+const userRepository = AppDataSource.getRepository(User);
+const userService = new UserService(userRepository);
+const authcontroller = new AuthController(userService, logger);
 
 router.post(
       "/register",
