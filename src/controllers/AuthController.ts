@@ -1,10 +1,17 @@
-import { NextFunction, Response } from "express"
-import { RegisterUserRequest } from "../types"
-import { UserService } from "../services/UserService"
-import { Logger } from "winston"
+import { NextFunction, Request, Response } from "express";
+import { RegisterUserRequest } from "../types";
+import { UserService } from "../services/UserService";
+import { Logger } from "winston";
 import { validationResult } from "express-validator";
+import { ParamsDictionary } from "express-serve-static-core";
+import { ParsedQs } from "qs";
+
+
 
 export class AuthController {
+      static register(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction): void | Promise<void> {
+            throw new Error("Method not implemented.");
+      }
       constructor(
             private userService: UserService,
             private logger: Logger,
