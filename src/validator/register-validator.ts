@@ -1,4 +1,5 @@
-import { checkSchema } from "express-validator";
+const { checkSchema } = require("express-validator");
+
 // import { body } from "express-validator";
 
 // export default [body("email").notEmpty().withMessage("email is required")];
