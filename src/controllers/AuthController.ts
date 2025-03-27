@@ -8,6 +8,7 @@ import { Logger } from "winston"
 import { ParamsDictionary } from "express-serve-static-core"
 import { ParsedQs } from "qs"
 import createHttpError from "http-errors"
+import { Config } from "../config"
 
 const { validationResult } = require("express-validator")
 
@@ -81,9 +82,13 @@ export class AuthController {
                         algorithm: "RS256",
                         expiresIn: "1h",
                         issuer: "auth-service",
-                  })
+                  });
 
-                  const refreshToken = "tefddeie"
+                  const refreshToken = sign(payload, Config.REFRESH_TOKEN_SECRET!, {
+                        algorithm: "HS256",
+                        expiresIn: '1y',
+                        issuer: 'auth-service',
+                  });
 
                   res.cookie("accessToken", accessToken, {
                         domain: "localhost",
