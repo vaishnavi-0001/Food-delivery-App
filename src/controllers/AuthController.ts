@@ -14,7 +14,8 @@ import { CredentialService } from "../services/CredentialService"
 const { validationResult } = require("express-validator")
 
 export class AuthController {
-      static login( //validation
+      static login(
+            //validation
             req: Request<
                   ParamsDictionary,
                   any,

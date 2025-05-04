@@ -28,7 +28,7 @@ export default [
                   // "no-console": "off",
                   // "@typescript-eslint/no-unused-vars": "warn",
                   // "@typescript-eslint/no-explicit-any": "warn",
-                  "@typescript-eslint/no-misused-promise": "off",
+                  "@typescript-eslint/no-misused-promise" : "off",
                   // "dot-notation": "error",
             },
       },
