@@ -41,4 +41,10 @@ export class UserService {
                   where: { email: email },
             })
       }
+
+      async findById(id: string) {
+            return await this.userRepository.findOne({
+                  where: { id: Number(id) },
+            })
+      }
 }

@@ -10,20 +10,22 @@ import { isJwt } from "../utils"
 import { RefreshToken } from "../../entity/RefreshToken"
 
 describe("POST / auth/register", () => {
-      let connection: DataSource
+      let connection: DataSource;
 
       beforeAll(async () => {
-            connection = await AppDataSource.initialize()
+            connection = await AppDataSource.initialize();
       })
 
       beforeEach(async () => {
             //Database Truncate
-            await connection.dropDatabase()
-            await connection.synchronize()
+            await connection.dropDatabase();
+            await connection.synchronize();
       })
 
       afterAll(async () => {
-            await connection.destroy()
+            if (connection) {
+                  await connection.destroy();
+            }
       })
 
       describe("Given Fields", () => {
@@ -151,7 +153,7 @@ describe("POST / auth/register", () => {
 
                   //Assert
                   const userRepository = connection.getRepository(User)
-                  const users = await userRepository.find()
+                  const users = await userRepository.find();
                   expect(users[0].password).not.toBe(userData.password)
                   expect(users[0].password).toHaveLength(60)
                   expect(users[0].password).toMatch(/^\$2b\$\d+\$/)
