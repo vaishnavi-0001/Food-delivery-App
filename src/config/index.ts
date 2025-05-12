@@ -1,6 +1,9 @@
 import { config } from "dotenv"
 import path from "path"
 
+console.log("Loading logger.ts...");
+// Or loading data-source.ts etc.
+
 config({
       path: path.join(__dirname, `../../.env.${process.env.NODE_ENV || "dev"}`),
 })

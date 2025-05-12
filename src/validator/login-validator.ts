@@ -1,4 +1,5 @@
-const { checkSchema } = require("express-validator")
+import { checkSchema } from 'express-validator/src/middlewares/schema';
+
 
 export default checkSchema({
       email: {

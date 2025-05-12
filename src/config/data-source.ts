@@ -2,6 +2,9 @@ import "reflect-metadata"
 import { DataSource } from "typeorm"
 import { Config } from "."
 
+console.log("Loading logger.ts...");
+// Or loading data-source.ts etc.
+
 export const AppDataSource = new DataSource({
       type: "postgres",
       host: Config.DB_HOST,
@@ -12,7 +15,7 @@ export const AppDataSource = new DataSource({
       // Don't use this in production. Always keep false
       synchronize: false,
       logging: false,
-      entities: ["src/entity/*.ts"],
-      migrations: ["src/migration/*.ts"],
+      entities: ["src/entity/*.{ts,js}"],
+      migrations: ["src/migration/*.{ts,js}"],
       subscribers: [],
 })

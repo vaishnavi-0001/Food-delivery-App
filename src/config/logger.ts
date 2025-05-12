@@ -1,5 +1,7 @@
 import winston from "winston"
 import { Config } from "."
+console.log("Loading logger.ts...");
+// Or loading data-source.ts etc.
 
 const logger = winston.createLogger({
       level: "info",

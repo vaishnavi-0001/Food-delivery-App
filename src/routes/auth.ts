@@ -9,10 +9,10 @@ import { TokenService } from "../services/TokenService";
 import { RefreshToken } from "../entity/RefreshToken";
 import loginValidator from "../validator/login-validator";
 import { CredentialService } from "../services/CredentialService";
-import { AuthRequest } from "../types";
 import authenticate from "../middlewares/authenticate";
+import { AuthRequest } from "../types";
 import validateRefreshToken from "../middlewares/validateRefreshToken";
-import parseRefreshToken from "../middlewares/parseRefreshtoken";
+import parseRefreshToken from "../middlewares/parseRefreshToken";
 
 const router = express.Router();
 const userRepository = AppDataSource.getRepository(User);
@@ -41,15 +41,15 @@ router.post(
         AuthController.login(req, res, next),
 );
 
-router.get("/self", authenticate ,(req: Request, res: Response) =>
-    AuthController.self(req as AuthRequest, res),
+router.get("/self", authenticate, (req: Request, res: Response) =>
+    authController.self(req as AuthRequest, res),
 );
 
 router.post(
     "/refresh",
     validateRefreshToken,
     (req: Request, res: Response, next: NextFunction) =>
-        AuthController.refresh(req as AuthRequest, res, next),
+        authController.refresh(req as AuthRequest, res, next),
 );
 
 router.post(
