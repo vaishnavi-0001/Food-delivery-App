@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express, { NextFunction, Request, RequestHandler, Response } from "express";
 import { AuthController } from "../controllers/AuthController";
 import { UserService } from "../services/UserService";
 import { AppDataSource } from "../config/data-source";
@@ -27,12 +27,13 @@ const authController = new AuthController(
     credentialService,
 );
 
-router.post(
-    "/register",
-    registerValidator,
-    (req: Request, res: Response, next: NextFunction) =>
-        AuthController.register(req, res, next),
-);
+router.post("/register", registerValidator, (async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) => {  
+    await authController.register(req, res, next);
+}) as RequestHandler);
 
 router.post(
     "/login",

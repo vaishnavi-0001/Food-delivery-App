@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
 import request from "supertest";
-import createJWKSMock from "mock-jwks";
+import { createJWKSMock } from "mock-jwks";
 
 import { AppDataSource } from "../../src/config/data-source";
 import app from "../../src/app"
