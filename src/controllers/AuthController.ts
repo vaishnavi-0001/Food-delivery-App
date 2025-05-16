@@ -12,7 +12,7 @@ import { ParamsDictionary } from "express-serve-static-core";
 import { ParsedQs } from "qs";
 
 export class AuthController {
-    static login(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction) {
+    static login(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction): void | Promise<void> {
         throw new Error("Method not implemented.");
     }
     static register(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction): void | Promise<void> {

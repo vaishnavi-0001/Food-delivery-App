@@ -37,9 +37,13 @@ router.post("/register", registerValidator, (async (
 
 router.post(
     "/login",
-    loginValidator,
-    (req: Request, res: Response, next: NextFunction) =>
-        AuthController.login(req, res, next),
+    loginValidator, (async(
+        req: Request,
+        res: Response, 
+        next: NextFunction
+    )=>{  
+    await authController.login(req, res, next);
+    }) ,
 );
 
 router.get("/self", authenticate, (req: Request, res: Response) =>
