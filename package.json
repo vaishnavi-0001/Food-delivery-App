@@ -2,7 +2,7 @@
    "name": "auth-service",
    "version": "1.0.0",
    "description": "The user management service",
-   "type": "commonjs",
+   "type": "module",
    "main": "index.js",
    "scripts": {
       "dev": "nodemon --loader ts-node/esm src/server.ts",
