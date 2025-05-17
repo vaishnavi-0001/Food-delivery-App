@@ -1,15 +1,9 @@
+// eslint.config.mjs
+import tseslint from 'typescript-eslint';
+
 export default [
   {
-    ignores: ["dist/**", "node_modules/**"]
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**'],
   },
-  {
-    files: ["**/*.js"],
-    languageOptions: {
-      ecmaVersion: 2021,
-      sourceType: "module"
-    },
-    rules: {
-      // add your rules here if needed
-    }
-  }
+  ...tseslint.configs.recommended,
 ];
