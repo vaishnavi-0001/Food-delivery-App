@@ -36,7 +36,7 @@ describe("GET /auth/self", () => {
                 sub: "1",
                 role: Roles.CUSTOMER,
             });
-            const response = await request(app as any)
+            const response = await request(app)
                 .get("/auth/self")
                 .set("Cookie", [`accessToken=${accessToken}`])
                 .send();
@@ -63,7 +63,7 @@ describe("GET /auth/self", () => {
             });
 
             // Add token to cookie
-            const response = await request(app as any)
+            const response = await request(app)
                 .get("/auth/self")
                 .set("Cookie", [`accessToken=${accessToken};`])
                 .send();
@@ -92,7 +92,7 @@ describe("GET /auth/self", () => {
             });
 
             // Add token to cookie
-            const response = await request(app as any)
+            const response = await request(app)
                 .get("/auth/self")
                 .set("Cookie", [`accessToken=${accessToken};`])
                 .send();
@@ -118,7 +118,7 @@ describe("GET /auth/self", () => {
             });
 
             // Add token to cookie
-            const response = await request(app as any).get("/auth/self").send();
+            const response = await request(app).get("/auth/self").send();
             // Assert
             expect(response.statusCode).toBe(401);
         });

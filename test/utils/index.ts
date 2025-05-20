@@ -23,6 +23,7 @@ export const isJwt = (token: string | null): boolean => {
             Buffer.from(part, "base64").toString("utf-8");
         });
         return true;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
         return false;
     }

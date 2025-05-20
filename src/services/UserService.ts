@@ -28,6 +28,7 @@ export class UserService {
                 role,
                  tenant: tenantId ? { id: tenantId } : undefined,
             });
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
             const error = createHttpError(
                 500,
@@ -71,6 +72,7 @@ export class UserService {
                 lastName,
                 role,
             });
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
             const error = createHttpError(
                 500,

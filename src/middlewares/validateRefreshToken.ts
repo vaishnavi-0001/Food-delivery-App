@@ -23,6 +23,7 @@ export default expressjwt({
                 },
             });
             return refreshToken === null;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
             logger.error("Error while getting the refresh token", {
                 id: (token?.payload as IRefreshTokenPayload).id,

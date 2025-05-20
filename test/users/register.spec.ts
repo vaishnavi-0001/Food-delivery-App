@@ -34,7 +34,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -51,7 +51,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -70,7 +70,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            await request(app as any).post("/auth/register").send(userData);
+            await request(app).post("/auth/register").send(userData);
 
             // Assert
             const userRepository = connection.getRepository(User);
@@ -90,7 +90,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -112,7 +112,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            await request(app as any).post("/auth/register").send(userData);
+            await request(app).post("/auth/register").send(userData);
 
             // Assert
             const userRepository = connection.getRepository(User);
@@ -130,7 +130,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            await request(app as any).post("/auth/register").send(userData);
+            await request(app).post("/auth/register").send(userData);
 
             // Assert
             const userRepository = connection.getRepository(User);
@@ -152,7 +152,7 @@ describe("POST /auth/register", () => {
             await userRepository.save({ ...userData, role: Roles.CUSTOMER });
 
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -172,7 +172,7 @@ describe("POST /auth/register", () => {
             };
 
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -209,7 +209,7 @@ describe("POST /auth/register", () => {
             };
 
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -237,7 +237,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -257,7 +257,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -276,7 +276,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -296,7 +296,7 @@ describe("POST /auth/register", () => {
                 password: " ",
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -318,24 +318,24 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            await request(app as any).post("/auth/register").send(userData);
+            await request(app).post("/auth/register").send(userData);
 
             // Assert
             const userRepository = connection.getRepository(User);
             const users = await userRepository.find();
             const user = users[0];
-            expect(user.email).toBe("rakesh@mern.space");
+            expect(user.email).toBe("navi@gmail.com");
         });
         it("should return 400 status code if email is not a valid email", async () => {
             // Arrange
             const userData = {
                  firstName: "Navi",
                 lastName: "Goyal",
-                email: "navi@gmails.com",
+                email: "navi@gmail.com",
                 password: "secret",
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -348,13 +348,13 @@ describe("POST /auth/register", () => {
         it("should return 400 status code if password length is less than 8 chars", async () => {
             // Arrange
             const userData = {
-                firstName: "Rakesh",
-                lastName: "K",
-                email: "rakesh@mern.space",
-                password: "pass", // less than 8 chars
+                firstName: "navi",
+                lastName: "Goyal",
+                email: "navi@gmail.com",
+                password: "secret", // less than 8 chars
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 
@@ -373,7 +373,7 @@ describe("POST /auth/register", () => {
                 password: "secret",
             };
             // Act
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/auth/register")
                 .send(userData);
 

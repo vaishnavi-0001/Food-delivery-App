@@ -47,7 +47,7 @@ describe("POST /auth/login", () => {
                   })
 
                   // Act
-                  const response = await request(app as any).post("/auth/login").send({
+                  const response = await request(app).post("/auth/login").send({
                         email: userData.email,
                         password: userData.password,
                   })
@@ -99,7 +99,7 @@ describe("POST /auth/login", () => {
                   })
 
                   // Act
-                  const response = await request(app as any).post("/auth/login").send({
+                  const response = await request(app).post("/auth/login").send({
                         email: userData.email,
                         password: "wrongPassword",
                   })

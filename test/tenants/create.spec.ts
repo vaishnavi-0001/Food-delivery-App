@@ -41,7 +41,7 @@ describe("POST /tenants", () => {
                 name: "Tenant name",
                 address: "Tenant address",
             };
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/tenants")
                 .set("Cookie", [`accessToken=${adminToken}`])
                 .send(tenantData);
@@ -55,7 +55,7 @@ describe("POST /tenants", () => {
                 address: "Tenant address",
             };
 
-            await request(app as any)
+            await request(app)
                 .post("/tenants")
                 .set("Cookie", [`accessToken=${adminToken}`])
                 .send(tenantData);
@@ -73,7 +73,7 @@ describe("POST /tenants", () => {
                 address: "Tenant address",
             };
 
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/tenants")
                 .send(tenantData);
             expect(response.statusCode).toBe(401);
@@ -95,7 +95,7 @@ describe("POST /tenants", () => {
                 address: "Tenant address",
             };
 
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/tenants")
                 .set("Cookie", [`accessToken=${managerToken}`])
                 .send(tenantData);

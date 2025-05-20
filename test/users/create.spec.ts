@@ -55,7 +55,7 @@ afterAll(async () => {
             };
 
             // Add token to cookie
-            await request(app as any)
+            await request(app)
                 .post("/users")
                 .set("Cookie", [`accessToken=${adminToken}`])
                 .send(userData);
@@ -85,7 +85,7 @@ afterAll(async () => {
             };
 
             // Add token to cookie
-            await request(app as any)
+            await request(app)
                 .post("/users")
                 .set("Cookie", [`accessToken=${adminToken}`])
                 .send(userData);
@@ -114,7 +114,7 @@ afterAll(async () => {
             };
 
             // Add token to cookie
-            const response = await request(app as any)
+            const response = await request(app)
                 .post("/users")
                 .set("Cookie", [`accessToken=${nonAdminToken}`])
                 .send(userData);
