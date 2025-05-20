@@ -1,4 +1,6 @@
-import { checkSchema } from "express-validator/check";
+// WORKAROUND for TypeScript
+import { checkSchema } from 'express-validator';
+
 
 export default checkSchema({
       email: {
