@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import { JwtPayload } from "jsonwebtoken";
 import { AuthRequest, RegisterUserRequest } from "../types";
 import { UserService } from "../services/UserService";
@@ -8,14 +8,13 @@ import { TokenService } from "../services/TokenService";
 import createHttpError from "http-errors";
 import { CredentialService } from "../services/CredentialService";
 import { Roles } from "../constants";
-import { ParamsDictionary } from "express-serve-static-core";
-import { ParsedQs } from "qs";
+
 
 export class AuthController {
-    static login(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction): void | Promise<void> {
+    static login(): void | Promise<void> {
         throw new Error("Method not implemented.");
     }
-    static register(req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction): void | Promise<void> {
+    static register(): void | Promise<void> {
         throw new Error("Method not implemented.");
     }
     constructor(
