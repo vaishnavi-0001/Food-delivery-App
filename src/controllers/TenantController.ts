@@ -3,7 +3,7 @@ import { TenantService } from "../services/TenantService"
 import { CreateTenantRequest } from "../types";
 import { Logger } from "winston";
 import createHttpError from "http-errors";
-import { validationResult } from 'express-validator/src/validation-result';
+import { validationResult } from 'express-validator';
 
 
 

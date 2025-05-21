@@ -3,7 +3,8 @@ import { UserService } from "../services/UserService";
 import { CreateUserRequest, UpdateUserRequest } from "../types";
 import createHttpError from "http-errors";
 import { Logger } from "winston";
-import { validationResult } from 'express-validator/src/validation-result';
+import { validationResult } from 'express-validator';
+
 
 
 export class UserController {
