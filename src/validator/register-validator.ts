@@ -1,5 +1,6 @@
 // WORKAROUND for TypeScript
-import { checkSchema } from 'express-validator';
+// Import like this as a workaround for TypeScript if default import fails
+import  checkSchema  from 'express-validator';
 
 
 export default checkSchema({
