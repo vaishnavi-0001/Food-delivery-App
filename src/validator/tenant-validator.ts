@@ -1,4 +1,5 @@
-import { checkSchema } from 'express-validator/src/middlewares/schema';
+import { checkSchema } from 'express-validator';
+
 
 
 
