@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { Config } from '.';
 
-console.log('Loading logger.ts...');
+// console.log('Loading logger.ts...');
 // Or loading data-source.ts etc.
 
 export const AppDataSource = new DataSource({

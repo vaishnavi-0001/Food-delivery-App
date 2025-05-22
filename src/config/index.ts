@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 import path from 'path';
 
-console.log('Loading logger.ts...');
+// console.log('Loading logger.ts...');
 // Or loading data-source.ts etc.
 
 config({
