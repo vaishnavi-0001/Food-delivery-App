@@ -45,7 +45,7 @@ jobs:
           done
 
       - name: Test and coverage
-        run: npm run test
+        run: node --experimental-vm-modules ./node_modules/.bin/jest
         env:
           DB_HOST: 127.0.0.1
           DB_PORT: 5432
