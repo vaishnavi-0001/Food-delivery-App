@@ -31,7 +31,7 @@ describe("POST /auth/register", () => {
                 firstName: "Navi",
                 lastName: "Goyal",
                 email: "navi@gmail.com",
-                password: "secret",
+                password: "secret001",
             };
             // Act
             const response = await request(app)
