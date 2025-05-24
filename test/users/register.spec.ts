@@ -4,8 +4,9 @@ import { User } from "../../src/entity/User";
 import { DataSource } from "typeorm";
 import { AppDataSource } from "../../src/config/data-source";
 import { Roles } from "../../src/constants";
-import { isJwt } from "../utils";
+import { createTenant, isJwt } from "../utils";
 import { RefreshToken } from "../../src/entity/RefreshToken";
+import { Tenant } from "../../src/entity/Tenant";
 
 describe("POST /auth/register", () => {
     let connection: DataSource;
@@ -309,23 +310,49 @@ describe("POST /auth/register", () => {
     });
 
     describe("Fields are not in proper format", () => {
-        it("should trim the email field", async () => {
-            // Arrange
-            const userData = {
-                 firstName: "Navi",
-                lastName: "Goyal",
-                email: "navi@gmail.com",
-                password: "secret",
-            };
-            // Act
-            await request(app).post("/auth/register").send(userData);
+        // it("should trim the email field", async () => {
+        //     // Arrange
+        //     const userData = {
+        //          firstName: "Navi",
+        //         lastName: "Goyal",
+        //         email: " navi@gmail.com ",
+        //         password: "secret",
+        //     };
+        //     // Act
+        //     const response = await request(app).post("/auth/register").send(userData);
 
-            // Assert
-            const userRepository = connection.getRepository(User);
-            const users = await userRepository.find();
-            const user = users[0];
-            expect(user.email).toBe("navi@gmail.com");
-        });
+        //     // Assert
+        //     const userRepository = connection.getRepository(User);
+        //     const users = await userRepository.find();
+        //     const user = users[0];
+        //     expect(response.statusCode).toBe("navi@gmail.com");
+
+        it("should trim the email field", async () => {
+    // Arrange
+    const tenant = await createTenant(connection.getRepository(Tenant));
+    const userData = {
+        firstName: "Navi",
+        lastName: "Goyal",
+        email: "  navi@gmail.com ", // intentionally untrimmed
+        password: "secret",
+        tenantId: tenant.id
+    };
+
+    // Act
+    const response = await request(app).post("/auth/register").send(userData);
+
+    // Assert
+    expect(response.statusCode).toBe(201); // or whatever your endpoint returns
+
+    const userRepository = connection.getRepository(User);
+    const users = await userRepository.find();
+    const user = users[0];
+
+    expect(user).toBeDefined();
+    expect(user.email).toBe("navi@gmail.com");
+});
+
+        // });
         it("should return 400 status code if email is not a valid email", async () => {
             // Arrange
             const userData = {
