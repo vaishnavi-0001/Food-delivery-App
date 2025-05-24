@@ -29,11 +29,14 @@ describe("POST /tenants", () => {
 
     afterAll(async () => {
         await connection.destroy();
+        jwks?.stop();
     });
 
     afterEach(() => {
+    if (jwks) {
         jwks.stop();
-    });
+    }
+});
 
     describe("Given all fields", () => {
         it("should return a 201 status code", async () => {
