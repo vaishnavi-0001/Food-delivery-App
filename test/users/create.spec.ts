@@ -20,6 +20,7 @@ describe("POST /users", () => {
             connection = await AppDataSource.initialize();
         } catch (err) {
             console.error("Failed to initialize DB:", err);
+            throw err;
         }
     });
 
