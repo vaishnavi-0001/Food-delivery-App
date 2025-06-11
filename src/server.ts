@@ -19,6 +19,4 @@ const startServer = async () => {
     }
 };
 
-export default app; // ✔️ ES module style
-
 void startServer();
